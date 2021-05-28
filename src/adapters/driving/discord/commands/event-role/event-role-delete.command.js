@@ -70,8 +70,6 @@ class EventRoleDeleteCommand {
         return;
       }
 
-      console.log({ messageId });
-
       eventMessage = await this.eventMessagesCache.getMessageById(messageId);
       if (!eventMessage) {
         message.reply(

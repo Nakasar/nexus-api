@@ -171,7 +171,7 @@ class EventRoleCreateCommand {
       "OK! J'ai rajouté trois réactions au message indiqué qui signifient respectivement :\n:white_check_mark: Participer.\n:calendar: Indisponible, une autre date ?\n:no_entry_sign: Pas intéressé.\n\n:bulb: Il peut être intéressant d'éditer le message pour s'assurer que cette légende soit indiquée dans l'annonce !\n\nDésormais, toute personne qui réagit avec :white_check_mark: se verra attribué le nouveau rôle créé.\nLorsque le rôle n'est plus nécessaire, pense à le supprimer soit depuis les permissions discord, soit en utilisant la commande `event-role delete <message>`, avec le lien du message d'annonce.\n\n:🧨: Tu peux supprimer ce message en toute sécurité en réagissant avec cette dynamite (il s'autodétruira au bout d'une minute également)."
     );
 
-    await noticeMessage.react("❌");
+    await noticeMessage.react("🧨");
     noticeMessage.awaitReactions((reaction, user) => {
       return (
         ["🧨"].includes(reaction.emoji.name) && user.id === message.author.id

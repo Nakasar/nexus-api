@@ -36,12 +36,29 @@ class EventRoleParticipantsCommand {
       }
     } else {
       // message argument is a message link or ID
-      const messageIds = messageArgument.split("/");
-
       let messageId;
-      if (messageIds.length === 1) {
-        messageId = messageIds[0];
+      if (!messageArgument.includes("/channels")) {
+        messageId = messageArgument;
+
+        if (!message.guild) {
+          message.reply(
+            "En spécifiant uniquement l'ID de l'évènement, la commande doit être exécutée dans le même canal que l'annonce de l'évènement.\n\n:bulb: Pour exécuter la commande de n'importe où, utilise plutôt le lien du message dans la commande."
+          );
+          return;
+        }
       } else {
+        const [linkPrefix, messageDescriptor] = messageArgument.split(
+          "/channels/"
+        );
+        const messageIds = messageDescriptor.split("/");
+
+        if (messageIds.length !== 3) {
+          message.reply(
+            "Je n'ai pas reconnu le format de l'url du message. Normalement, un lien vers un message est de la forme suivante : `https://discord.com/channels/<guildId>/<channelId>/<messageId>`.\n\n:bulb: Si tu utilise cette commande dans le même canal que le message de l'évènement, tu peux mettre l'ID du message au lieu du lien."
+          );
+          return;
+        }
+
         messageId = messageIds[2];
       }
 
@@ -65,7 +82,7 @@ class EventRoleParticipantsCommand {
     const role = await guild.roles.fetch(eventMessage.eventRoleId);
 
     await message.channel.send(
-      `Les participants à l'évènement associé au rôle ${role} sont: ${role.members
+      `Les participants à l'évènement associé au rôle **${role.name}** sont: ${role.members
         .map(member => member.displayName)
         .join(", ")}.`
     );
