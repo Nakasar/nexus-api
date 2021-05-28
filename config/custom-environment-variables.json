@@ -1,0 +1,14 @@
+{
+  "services": {
+    "discord": {
+      "botToken": "DISCORD_BOT_TOKEN"
+    },
+    "firebase": {
+      "projectId": "SERVICES__FIREBASE__PROJECT_ID",
+      "privateKeyId": "SERVICES__FIREBASE__PRIVATE_KEY_ID",
+      "privateKey": "SERVICES__FIREBASE__PRIVATE_KEY",
+      "clientEmail": "SERVICES__FIREBASE__CLIENT_EMAIL",
+      "clientId": "SERVICES__FIREBASE__CLIENT_ID"
+    }
+  }
+}

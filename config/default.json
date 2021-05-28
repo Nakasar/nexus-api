@@ -1,0 +1,14 @@
+{
+  "services": {
+    "discord": {
+      "botToken": "to define"
+    },
+    "firebase": {
+      "projectId": "to define",
+      "privateKeyId": "to define",
+      "privateKey": "to define",
+      "clientEmail": "to define",
+      "clientId": "to define"
+    }
+  }
+}
